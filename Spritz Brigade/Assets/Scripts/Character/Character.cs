@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] public int health;
-    [SerializeField] public float moveSpeed;
+    public int health;
+    public float moveSpeed;
 }

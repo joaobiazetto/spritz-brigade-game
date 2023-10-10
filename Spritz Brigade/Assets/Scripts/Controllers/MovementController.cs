@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public float moveSpeed = 8f;
-    private Rigidbody playerRigidbody;
+    public PlayerCharacter playerCharacter;
+
+    public GameObject playerRig;
+
+    private Rigidbody playerRigRb;
 
     private void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody>();
+        playerRigRb = playerRig.GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed;
+        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * playerCharacter.moveSpeed;
 
-        playerRigidbody.velocity = movement;
+        playerRigRb.velocity = movement;
     }
 }

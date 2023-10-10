@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
-    private void shootWaterGun()
-    {
-    }
+    [SerializeField] WaterGunWeapon waterGunWeapon;
 
-    private void tossWaterBalloon()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            waterGunWeapon.Fire();
+        }
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class AimController : MonoBehaviour
 {
-    [SerializeField] private LayerMask groundMask;
+    Vector3 lookPosition;
+    Camera mainCamera;
 
-    private Camera mainCamera;
+    public Transform playerRigTransform;
 
     private void Start()
     {
-        // Cache the camera, Camera.main is an expensive operation.
         mainCamera = Camera.main;
     }
 
@@ -22,34 +22,16 @@ public class AimController : MonoBehaviour
 
     private void Aim()
     {
-        var (success, position) = GetMousePosition();
-        if (success)
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100))
         {
-            // Calculate the direction
-            var direction = position - transform.position;
-
-            // You might want to delete this line.
-            // Ignore the height difference.
-            direction.y = 0;
-
-            // Make the transform look in the direction.
-            transform.forward = direction;
+            lookPosition = hit.point;
         }
-    }
 
-    private (bool success, Vector3 position) GetMousePosition()
-    {
-        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        var direction = lookPosition - playerRigTransform.position;
+        direction.y = 0;
 
-        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
-        {
-            // The Raycast hit something, return with the position.
-            return (success: true, position: hitInfo.point);
-        }
-        else
-        {
-            // The Raycast did not hit anything.
-            return (success: false, position: Vector3.zero);
-        }
+        playerRigTransform.LookAt(playerRigTransform.position + direction, Vector3.up);
     }
 }

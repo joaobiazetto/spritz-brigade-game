@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterGunWeapon : MonoBehaviour
+public class WaterGunWeapon : Weapon, IWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Fire()
     {
+        // Instantiate a water bullet at the spawn point
+        GameObject waterBullet = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+
+        // Get the Rigidbody component of the water bullet
         
+        if (waterBullet.TryGetComponent<Rigidbody>(out var bulletRigidbody))
+        {
+            // Set the initial velocity of the water bullet
+            bulletRigidbody.velocity = projectileSpawnPoint.forward * projectileSpeed;
+        }
+
+        Destroy(waterBullet, projectileLifetime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
