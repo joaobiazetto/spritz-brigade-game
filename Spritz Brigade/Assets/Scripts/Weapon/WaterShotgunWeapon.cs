@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class WaterGunWeapon : Weapon, IWeapon
+public class WaterShotgunWeapon : Weapon, IWeapon
 {
     public void Fire()
     {

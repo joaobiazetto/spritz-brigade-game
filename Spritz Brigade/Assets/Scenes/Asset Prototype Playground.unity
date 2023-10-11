@@ -476,3 +476,64 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d41a40f1c920149bd3f203ad83fdbf, type: 3}
+--- !u!1001 &7597687418330045619
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300437535608828970, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604624829726219765, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}
+      propertyPath: m_Name
+      value: HeavyWaterGunWeapon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9926d8f61729ba541a3129f3397a6e27, type: 3}

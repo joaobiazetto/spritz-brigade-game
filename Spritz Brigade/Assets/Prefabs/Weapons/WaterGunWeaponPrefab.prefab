@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7992474048082398773}
   - component: {fileID: 2255219039302490897}
   - component: {fileID: 566652525717642884}
-  - component: {fileID: 6654905149344857944}
+  - component: {fileID: -3149741861059380064}
   m_Layer: 0
-  m_Name: WaterGun
+  m_Name: WaterGunWeaponPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,15 +27,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3154211056131853223}
-  m_LocalRotation: {x: -0, y: -0.7106322, z: -0, w: 0.70356363}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.369, y: 0.10500002, z: 0.509}
-  m_LocalScale: {x: 1, y: 0.18303, z: 0.10282}
+  m_LocalScale: {x: 0.14295, y: 0.18303, z: 0.7614635}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8676548036465863747}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: -90.573, z: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &7992474048082398773
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6654905149344857944
+--- !u!114 &-3149741861059380064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f5e16ea67e78e43809febe08165c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 20
-  projectileLifetime: 3
+  damage: 2
+  projectileSpeed: 25
+  projectileLifetime: 2.5
   projectileSpawnPoint: {fileID: 8676548036465863747}
   projectilePrefab: {fileID: 2516227360831352219, guid: 363662fac05e0464c902cfe881739e57, type: 3}
 --- !u!1 &5212063805231475905
@@ -133,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8676548036465863747}
   m_Layer: 0
-  m_Name: BulletSpawnPoint
+  m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,11 +147,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5212063805231475905}
-  m_LocalRotation: {x: -0, y: 0.71063226, z: -0, w: 0.7035637}
-  m_LocalPosition: {x: 0.5210638, y: 0.1365895, z: 0.03687465}
+  m_LocalRotation: {x: -0, y: 0.026440645, z: -0, w: 0.99965036}
+  m_LocalPosition: {x: -0.029999131, y: -0.08, z: 0.5220066}
   m_LocalScale: {x: 9.717261, y: 5.4635854, z: 1.0000898}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8818704262779523796}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 3.03, z: 0}
