@@ -15,7 +15,7 @@ public class MovementController : MonoBehaviour
         playerRigRb = playerRig.GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");

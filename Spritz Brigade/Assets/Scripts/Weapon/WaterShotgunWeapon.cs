@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterShotgunWeapon : Weapon, IWeapon
+public class WaterShotgunWeapon : Weapon, IFireable
 {
     public void Fire()
     {

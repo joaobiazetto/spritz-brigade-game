@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class WaterGunWeapon : Weapon, IWeapon
+public class WaterGunWeapon : Weapon, IFireable
 {
     public void Fire()
     {

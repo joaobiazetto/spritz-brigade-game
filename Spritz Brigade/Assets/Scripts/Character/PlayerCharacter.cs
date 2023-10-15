@@ -10,14 +10,14 @@ public class PlayerCharacter : Character
     [SerializeField] private AssetReference waterGunPrefabAssetReference;
     [SerializeField] private AssetReference waterShotgunPrefabAssetReference;
 
-    private IWeapon currentWeapon;
+    private IFireable currentWeapon;
 
     void Start()
     {
         Debug.Log("PlayerController Start");
 
         // Start with Water Gun
-        EquipWeapon(waterGunPrefabAssetReference);
+        SwitchToWaterGun();
     }
 
     private void Update()
@@ -42,33 +42,44 @@ public class PlayerCharacter : Character
     private void SwitchToWaterShotgun()
     {
         // Destroy the current weapon
-        Destroy(currentWeapon as MonoBehaviour);
+        DestroyCurrentWeapon();
 
-        // Equip the Water Shotgun
-        EquipWeapon(waterShotgunPrefabAssetReference);
-    }
-
-    private void SwitchToWaterGun()
-    {
-        // Destroy the current weapon
-        Destroy(currentWeapon as MonoBehaviour);
-
-        // Equip the Water Gun
-        EquipWeapon(waterGunPrefabAssetReference);
-    }
-
-    private void EquipWeapon(AssetReference weaponPrefabReference)
-    {
-        // Instantiate and equip the specified weapon using the PrefabManager
-        PrefabManager.Instance.InstantiatePrefabAsync(weaponPrefabReference, weaponSpawnPoint.position, Quaternion.identity, instantiatedPrefab =>
+        // Instantiate the Water Shotgun using PrefabManager
+        PrefabManager.Instance.InstantiatePrefabAsync(waterShotgunPrefabAssetReference, instantiatedPrefab =>
         {
-            currentWeapon = instantiatedPrefab.GetComponent<IWeapon>();
+            currentWeapon = instantiatedPrefab.GetComponent<IFireable>();
 
             // Attach the weapon to the player
             AttachWeaponToPlayer();
 
             // Additional setup or logic for the weapon if needed
         });
+    }
+
+    private void SwitchToWaterGun()
+    {
+        // Destroy the current weapon
+        DestroyCurrentWeapon();
+
+        // Instantiate the Water Gun using PrefabManager
+        PrefabManager.Instance.InstantiatePrefabAsync(waterGunPrefabAssetReference, instantiatedPrefab =>
+        {
+            currentWeapon = instantiatedPrefab.GetComponent<IFireable>();
+
+            // Attach the weapon to the player
+            AttachWeaponToPlayer();
+
+            // Additional setup or logic for the weapon if needed
+        });
+    }
+
+    private void DestroyCurrentWeapon()
+    {
+        if (currentWeapon != null && currentWeapon is MonoBehaviour weaponMono)
+        {
+            // Destroy the current weapon
+            Destroy(weaponMono.gameObject);
+        }
     }
 
     private void AttachWeaponToPlayer()
