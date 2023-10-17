@@ -1,14 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour, IFireable
 {
-    public float damage;
+    [Header("Weapon Settings")]
+    [SerializeField] protected float damage;
+    [SerializeField] protected float projectileSpeed;
+    [SerializeField] protected float projectileLifetime;
+    [SerializeField] protected float cooldownTime;
+    [SerializeField] protected int maxAmmo;
 
-    public float projectileSpeed;
-    public float projectileLifetime;
+    protected int currentAmmo;
 
-    public Transform projectileSpawnPoint;
-    public GameObject projectilePrefab;
+    [Header("Prefab Settings")]
+    [SerializeField] protected Transform projectileSpawnPoint;
+    [SerializeField] protected GameObject projectilePrefab;
+
+    [Header("State")]
+    [SerializeField] protected bool canFire = true;
+
+    protected virtual void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
+
+    public abstract void Fire();
+
+    protected IEnumerator Cooldown()
+    {
+        canFire = false;
+        yield return new WaitForSeconds(cooldownTime);
+        canFire = true;
+    }
+
+    protected void Reload()
+    {
+        // Add any reload animations or logic here
+        Debug.Log("Reloading...");
+        currentAmmo = maxAmmo;
+        Debug.Log("Reloaded!");
+    }
 }

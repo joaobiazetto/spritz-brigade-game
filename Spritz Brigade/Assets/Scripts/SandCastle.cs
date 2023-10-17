@@ -14,6 +14,6 @@ public class SandCastle : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        currentHealth -= damageTaken;
     }
 }

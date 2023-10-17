@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class ToddlerEnemyCharacter : EnemyCharacter
 {
-    public override void Attack(IDamageable target, float damage)
+    public override void Attack(IDamageable target)
     {
-        throw new System.NotImplementedException();
-    }
+        if (CanAttack())
+        {
+            // Perform the attack logic here
+            Debug.Log($"{gameObject.name} is attacking!");
+            target.TakeDamage(attackDamage);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // Update the last attack time
+            UpdateLastAttackTime();
+        }
     }
 }

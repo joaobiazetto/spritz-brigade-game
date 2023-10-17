@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterShotgunWeapon : Weapon, IFireable
+public class WaterShotgunWeapon : Weapon
 {
-    public void Fire()
+    public override void Fire()
     {
-        GameObject waterBullet = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-
-        if (waterBullet.TryGetComponent<Rigidbody>(out var bulletRigidbody))
+        if (canFire && currentAmmo > 0)
         {
-            bulletRigidbody.velocity = projectileSpawnPoint.forward * projectileSpeed;
-        }
+            currentAmmo--;
 
-        Destroy(waterBullet, projectileLifetime);
+            GameObject waterShotgunBullet = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+
+            if (waterShotgunBullet.TryGetComponent<BulletController>(out var waterBulletComponent))
+            {
+                waterBulletComponent.damage = damage; // Set the damage value for the bullet
+            }
+
+            if (waterShotgunBullet.TryGetComponent<Rigidbody>(out var bulletRigidbody))
+            {
+                bulletRigidbody.velocity = projectileSpawnPoint.forward * projectileSpeed;
+            }
+
+            Destroy(waterShotgunBullet, projectileLifetime);
+
+            StartCoroutine(Cooldown());
+        }
+        else if (currentAmmo == 0)
+        {
+            Reload();
+        }
     }
 }

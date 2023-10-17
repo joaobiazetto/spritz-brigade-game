@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2848351882015416032}
   - component: {fileID: 7151287774905516872}
   - component: {fileID: 7942878869037772308}
-  - component: {fileID: 4209842224857660307}
+  - component: {fileID: 7112487690322184797}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 7151287774905516872}
   playerRig: {fileID: 8546497620521538350}
---- !u!114 &4209842224857660307
+--- !u!114 &7112487690322184797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -27,6 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3154211056131853223}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.369, y: 0.10500002, z: 0.509}
   m_LocalScale: {x: 0.14295, y: 0.18303, z: 0.7614635}
@@ -34,7 +35,6 @@ Transform:
   m_Children:
   - {fileID: 8676548036465863747}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &7992474048082398773
 MeshFilter:
@@ -122,8 +122,11 @@ MonoBehaviour:
   damage: 2
   projectileSpeed: 25
   projectileLifetime: 2.5
+  cooldownTime: 0.1
+  maxAmmo: 8
   projectileSpawnPoint: {fileID: 8676548036465863747}
   projectilePrefab: {fileID: 2516227360831352219, guid: 363662fac05e0464c902cfe881739e57, type: 3}
+  canFire: 1
 --- !u!1 &5212063805231475905
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,11 +150,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5212063805231475905}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.026440645, z: -0, w: 0.99965036}
   m_LocalPosition: {x: -0.029999131, y: -0.08, z: 0.5220066}
   m_LocalScale: {x: 9.717261, y: 5.4635854, z: 1.0000898}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8818704262779523796}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 3.03, z: 0}

@@ -8,6 +8,28 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private AssetReference toddlerPrefabAssetReference;
     [SerializeField] private AssetReference preSchoolerPrefabAssetReference;
 
+    private static EnemyManager _instance;
+
+    public static EnemyManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindWithTag("EnemyManager")?.GetComponent<EnemyManager>();
+
+                if (_instance == null)
+                {
+                    GameObject managerObject = new GameObject("EnemyManager");
+                    managerObject.tag = "EnemyManager";
+                    _instance = managerObject.AddComponent<EnemyManager>();
+                }
+            }
+            return _instance;
+        }
+    }
+
+
     public void SpawnToddler(Vector3 position, Transform target)
     {
         SpawnEnemy(position, target, toddlerPrefabAssetReference);
@@ -24,7 +46,6 @@ public class EnemyManager : MonoBehaviour
         PrefabManager.Instance.InstantiatePrefabAsync(prefabReference, position, Quaternion.identity, instantiatedPrefab =>
         {
             // Handle additional setup or logic for the instantiated enemy
-            // For example, setting the target for the enemy, initializing health, etc.
             EnemyCharacter enemy = instantiatedPrefab.GetComponent<EnemyCharacter>();
             if (enemy != null)
             {

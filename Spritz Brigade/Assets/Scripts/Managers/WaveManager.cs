@@ -6,12 +6,33 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform sandCastleTransform;
     [SerializeField] private float timeBetweenWaves = 5f;
 
     private int currentWave = 0;
+
+    private static WaveManager _instance;
+
+    public static WaveManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindWithTag("WaveManager")?.GetComponent<WaveManager>();
+
+                if (_instance == null)
+                {
+                    GameObject managerObject = new GameObject("WaveManager");
+                    managerObject.tag = "EnemyManager";
+                    _instance = managerObject.AddComponent<WaveManager>();
+                }
+            }
+            return _instance;
+        }
+    }
 
     private void Start()
     {
@@ -40,8 +61,17 @@ public class WaveManager : MonoBehaviour
         int toddlersToSpawn = currentWave * 2;
         int preSchoolersToSpawn = currentWave;
 
+        // Convert the array to a list for shuffling
+        List<Transform> spawnPointsList = new List<Transform>(spawnPoints);
+
         // Randomly select spawn points
-        Transform[] selectedSpawnPoints = GetRandomSpawnPoints(spawnPoints, toddlersToSpawn + preSchoolersToSpawn);
+        List<Transform> selectedSpawnPoints = GetRandomSpawnPoints(spawnPointsList, toddlersToSpawn + preSchoolersToSpawn);
+
+        if (selectedSpawnPoints.Count < toddlersToSpawn + preSchoolersToSpawn)
+        {
+            Debug.LogError("Not enough spawn points!");
+            return;
+        }
 
         // Spawn toddlers
         for (int i = 0; i < toddlersToSpawn; i++)
@@ -62,15 +92,19 @@ public class WaveManager : MonoBehaviour
         return Random.Range(0f, 1f) > 0.5f ? playerTransform : sandCastleTransform;
     }
 
-    private Transform[] GetRandomSpawnPoints(Transform[] spawnPoints, int count)
+    private List<Transform> GetRandomSpawnPoints(List<Transform> spawnPoints, int count)
     {
-        // Shuffle the spawn points array and return the first 'count' elements
-        for (int i = spawnPoints.Length - 1; i > 0; i--)
+        // Create a copy of the spawn points list
+        List<Transform> shuffledSpawnPoints = new List<Transform>(spawnPoints);
+
+        // Shuffle the copied list
+        for (int i = shuffledSpawnPoints.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
-            (spawnPoints[randomIndex], spawnPoints[i]) = (spawnPoints[i], spawnPoints[randomIndex]);
+            (shuffledSpawnPoints[randomIndex], shuffledSpawnPoints[i]) = (shuffledSpawnPoints[i], shuffledSpawnPoints[randomIndex]);
         }
 
-        return spawnPoints.Take(count).ToArray();
+        // Return the first 'count' elements from the shuffled list
+        return shuffledSpawnPoints.Take(count).ToList();
     }
 }
