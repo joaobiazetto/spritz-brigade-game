@@ -3,18 +3,23 @@ using UnityEngine.AI;
 
 public class EnemyMovementController : MonoBehaviour
 {
+    private GameObject target;
     private NavMeshAgent navMeshAgent;
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("PlayerRig");
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.autoBraking = false;
     }
 
-    // Call this method to make the enemy move to a target
-    public void MoveToTarget(Transform targetTransform)
+    private void Update()
     {
-        Debug.Log($"Moving to target: {targetTransform.position}");
-        navMeshAgent.SetDestination(targetTransform.position);
+        navMeshAgent.SetDestination(target.transform.position);
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
     }
 }

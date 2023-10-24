@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class PlayerCharacter : Character
+public class PlayerCharacter : Character, IDamageable
 {
     [SerializeField] private Transform weaponSpawnPoint;
     [SerializeField] private AssetReference waterGunPrefabAssetReference;
@@ -48,8 +48,6 @@ public class PlayerCharacter : Character
 
             // Attach the weapon to the player
             AttachWeaponToPlayer();
-
-            // Additional setup or logic for the weapon if needed
         });
     }
 
@@ -65,8 +63,6 @@ public class PlayerCharacter : Character
 
             // Attach the weapon to the player
             AttachWeaponToPlayer();
-
-            // Additional setup or logic for the weapon if needed
         });
     }
 
@@ -87,6 +83,16 @@ public class PlayerCharacter : Character
             weaponMono.transform.parent = weaponSpawnPoint;
             weaponMono.transform.localPosition = Vector3.zero;
             weaponMono.transform.localRotation = Quaternion.identity;
+        }
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        currentHealth -= damageTaken;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

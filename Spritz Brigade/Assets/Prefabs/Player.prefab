@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7151287774905516872}
   - component: {fileID: 7942878869037772308}
   - component: {fileID: 7112487690322184797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   moveSpeed: 8
+  currentHealth: 0
   weaponSpawnPoint: {fileID: 2330501263617802321}
   waterGunPrefabAssetReference:
     m_AssetGUID: ca59fff182635c648a2c00c36ef1892f
@@ -96,7 +97,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2330501263617802321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,11 +130,11 @@ GameObject:
   - component: {fileID: 3546007237034524201}
   - component: {fileID: 7041243530262349466}
   - component: {fileID: 1672076721457176386}
-  - component: {fileID: 8434452683628046902}
+  - component: {fileID: 5846194834132809525}
   - component: {fileID: 1886922925080181146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerRig
-  m_TagString: Untagged
+  m_TagString: PlayerRig
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,8 +205,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8434452683628046902
-CapsuleCollider:
+--- !u!65 &5846194834132809525
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -219,13 +220,11 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 2, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1886922925080181146
 Rigidbody:

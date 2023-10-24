@@ -7,8 +7,8 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Transform sandCastleTransform;
+    [SerializeField] private GameObject playerRig;
+    [SerializeField] private GameObject sandCastleRig;
     [SerializeField] private float timeBetweenWaves = 5f;
 
     private int currentWave = 0;
@@ -62,7 +62,7 @@ public class WaveManager : MonoBehaviour
         int preSchoolersToSpawn = currentWave;
 
         // Convert the array to a list for shuffling
-        List<Transform> spawnPointsList = new List<Transform>(spawnPoints);
+        List<Transform> spawnPointsList = new(spawnPoints);
 
         // Randomly select spawn points
         List<Transform> selectedSpawnPoints = GetRandomSpawnPoints(spawnPointsList, toddlersToSpawn + preSchoolersToSpawn);
@@ -76,20 +76,20 @@ public class WaveManager : MonoBehaviour
         // Spawn toddlers
         for (int i = 0; i < toddlersToSpawn; i++)
         {
-            enemyManager.SpawnToddler(selectedSpawnPoints[i].position, GetRandomTarget());
+            enemyManager.SpawnToddler(selectedSpawnPoints[i].position, GetRandomTarget().transform);
         }
 
         // Spawn preSchoolers
         for (int i = toddlersToSpawn; i < toddlersToSpawn + preSchoolersToSpawn; i++)
         {
-            enemyManager.SpawnPreSchooler(selectedSpawnPoints[i].position, GetRandomTarget());
+            enemyManager.SpawnPreSchooler(selectedSpawnPoints[i].position, GetRandomTarget().transform);
         }
     }
 
-    private Transform GetRandomTarget()
+    private GameObject GetRandomTarget()
     {
         // Example: Get a random player or sand castle transform as the target
-        return Random.Range(0f, 1f) > 0.5f ? playerTransform : sandCastleTransform;
+        return Random.Range(0f, 1f) > 0.5f ? playerRig : sandCastleRig;
     }
 
     private List<Transform> GetRandomSpawnPoints(List<Transform> spawnPoints, int count)

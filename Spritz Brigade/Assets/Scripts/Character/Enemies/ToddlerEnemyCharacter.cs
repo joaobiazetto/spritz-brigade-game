@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToddlerEnemyCharacter : EnemyCharacter
+public class ToddlerEnemyCharacter : EnemyCharacter, IDamageable
 {
-    public override void Attack(IDamageable target)
+    public void TakeDamage(float damageTaken)
     {
-        if (CanAttack())
-        {
-            // Perform the attack logic here
-            Debug.Log($"{gameObject.name} is attacking!");
-            target.TakeDamage(attackDamage);
+        currentHealth -= damageTaken;
 
-            // Update the last attack time
-            UpdateLastAttackTime();
+        if (currentHealth <= 0 )
+        {
+            Destroy(gameObject);
         }
     }
 }

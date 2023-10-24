@@ -49,8 +49,6 @@ public class EnemyManager : MonoBehaviour
             EnemyCharacter enemy = instantiatedPrefab.GetComponent<EnemyCharacter>();
             if (enemy != null)
             {
-                enemy.SetTarget(target); // Set the target for the specific enemy type
-                enemy.Follow(); // Start following the assigned target
             }
         });
     }
