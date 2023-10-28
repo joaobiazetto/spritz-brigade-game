@@ -6,16 +6,23 @@ public class EnemyMovementController : MonoBehaviour
     private GameObject target;
     private NavMeshAgent navMeshAgent;
 
+    private EnemyCharacter enemy;
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("PlayerRig");
+        enemy = gameObject.GetComponent<EnemyCharacter>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.autoBraking = false;
+        navMeshAgent.speed = enemy.moveSpeed;
     }
 
     private void Update()
     {
-        navMeshAgent.SetDestination(target.transform.position);
+        if (target != null)
+        {
+            navMeshAgent.SetDestination(target.transform.position);
+        }
     }
 
     public void SetTarget(GameObject target)

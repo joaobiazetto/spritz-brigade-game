@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6804679651431916745}
   - component: {fileID: 15602707439733369}
   - component: {fileID: 9095816937411481280}
-  - component: {fileID: 2630871942694599055}
   - component: {fileID: 8325765265856433421}
   - component: {fileID: 3126523736208488909}
   m_Layer: 6
@@ -50,9 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  moveSpeed: 12
+  moveSpeed: 4
   currentHealth: 0
   damage: 2
+  rotationSpeed: 300
+  noodle: {fileID: 1670843416522085244}
 --- !u!114 &9095816937411481280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,20 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2050bca8f0dff11428ffed11b7072491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2630871942694599055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590388377362580517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30d190ddac2def4cace3cbff1ff0dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 300
-  noodle: {fileID: 1670843416522085244}
 --- !u!65 &8325765265856433421
 BoxCollider:
   m_ObjectHideFlags: 0
