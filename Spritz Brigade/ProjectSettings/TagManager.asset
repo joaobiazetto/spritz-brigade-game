@@ -9,6 +9,7 @@ TagManager:
   - EnemyManager
   - PrefabManager
   - PlayerRig
+  - Enemy
   layers:
   - Default
   - TransparentFX
