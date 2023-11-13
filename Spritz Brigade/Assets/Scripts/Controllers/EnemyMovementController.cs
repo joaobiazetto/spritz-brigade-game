@@ -10,7 +10,6 @@ public class EnemyMovementController : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("PlayerRig");
         enemy = gameObject.GetComponent<EnemyCharacter>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.autoBraking = false;

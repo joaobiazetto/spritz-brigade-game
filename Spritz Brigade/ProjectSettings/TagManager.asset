@@ -10,6 +10,7 @@ TagManager:
   - PrefabManager
   - PlayerRig
   - Enemy
+  - SandCastleRig
   layers:
   - Default
   - TransparentFX

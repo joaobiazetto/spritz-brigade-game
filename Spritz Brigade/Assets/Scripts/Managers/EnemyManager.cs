@@ -5,9 +5,6 @@ using UnityEngine.AddressableAssets;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private AssetReference toddlerPrefabAssetReference;
-    [SerializeField] private AssetReference preSchoolerPrefabAssetReference;
-
     private static EnemyManager _instance;
 
     public static EnemyManager Instance
@@ -29,26 +26,19 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-
-    public void SpawnToddler(Vector3 position, Transform target)
+    public void SpawnEnemy(Vector3 position, AssetReference prefabReference)
     {
-        SpawnEnemy(position, target, toddlerPrefabAssetReference);
-    }
+        GameObject target = Random.Range(0f, 1f) > 0.5f ? GameObject.FindWithTag("SandCastleRig") : GameObject.FindWithTag("PlayerRig");
 
-    public void SpawnPreSchooler(Vector3 position, Transform target)
-    {
-        SpawnEnemy(position, target, preSchoolerPrefabAssetReference);
-    }
-
-    private void SpawnEnemy(Vector3 position, Transform target, AssetReference prefabReference)
-    {
         // Instantiate enemy prefab asynchronously using Addressables
         PrefabManager.Instance.InstantiatePrefabAsync(prefabReference, position, Quaternion.identity, instantiatedPrefab =>
         {
             // Handle additional setup or logic for the instantiated enemy
-            EnemyCharacter enemy = instantiatedPrefab.GetComponent<EnemyCharacter>();
-            if (enemy != null)
+            EnemyMovementController enemyMovement = instantiatedPrefab.GetComponent<EnemyMovementController>();
+
+            if (enemyMovement != null)
             {
+                enemyMovement.SetTarget(target);
             }
         });
     }
