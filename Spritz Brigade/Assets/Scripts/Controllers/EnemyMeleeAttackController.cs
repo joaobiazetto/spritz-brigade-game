@@ -1,73 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyMeleeAttackController : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private GameObject noodle;
-
-    private bool isAttacking;
-
     private EnemyCharacter enemy;
-    private IDamageable attackTarget;
+    private IDamageable _attackTarget;
+    private float lastAttackTime;
 
-    protected virtual void Start()
+    private void Start()
     {
-        isAttacking = false;
-
         enemy = GetComponent<EnemyCharacter>();
+        lastAttackTime = enemy.attackCooldown;
+        _attackTarget = null;
     }
 
     private void Update()
     {
-        if (isAttacking)
+        if (IsValidAttackTarget(_attackTarget))
         {
-            noodle.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-
-            Debug.Log("Swinging the noodle!");
-
-            if (attackTarget != null)
+            if (IsReadyToAttack())
             {
-                Debug.Log($"Attacking the {attackTarget}!");
-                attackTarget.TakeDamage(enemy.damage);
-            } 
-        }
-    }
+                enemy.Attack(_attackTarget);
+                lastAttackTime = Time.time;
+            }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("On attack range!");
-
-        IDamageable damageable = other.GetComponentInParent<IDamageable>();
-
-        if (damageable != null)
-        {
-            Debug.Log("It's attacking something!");
-
-            isAttacking = true;
-            SetAttackTarget(damageable);
+            Debug.Log($"Last Attack Time: {lastAttackTime}");
         }
         else
         {
-            Debug.Log("No IDamageable component found on the collided object.");
+            SetAttackTarget(null);
         }
+        
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null && !other.CompareTag(gameObject.tag))
+        {
+            IDamageable damageable = other.GetComponentInParent<IDamageable>();
+
+            if (damageable == null)
+            {
+                Debug.Log("No IDamageable component found on the collided object.");
+            }
+            else
+            {
+                Debug.Log($"It's attacking {other.gameObject.tag}!");
+
+                SetAttackTarget(damageable);
+            }
+        }
+    }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Out of attack range!");
 
-        if (other.CompareTag("PlayerRig") || other.CompareTag("SandCastle"))
+        if (other.CompareTag("PlayerRig") || other.CompareTag("SandCastleRig"))
         {
-            isAttacking = false;
+            SetAttackTarget(null);
         }
     }
 
-    private void SetAttackTarget(IDamageable target)
+    public void SetAttackTarget(IDamageable target)
     {
-       attackTarget = target;
+        _attackTarget = target;
+    }
+
+    public bool IsValidAttackTarget(IDamageable attackTarget)
+    {
+        return attackTarget != null && !attackTarget.Equals(null);
+    }
+
+    private bool IsReadyToAttack()
+    {
+        return Time.time - lastAttackTime >= enemy.attackCooldown;
     }
 }

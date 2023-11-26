@@ -9,61 +9,19 @@ public class ToddlerEnemyCharacter : EnemyCharacter, IDamageable
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject noodle;
 
-    private void Update()
+    public override void Attack(IDamageable _attackTarget)
     {
-        if (attackTarget != null)
-        {
-            if (IsValidAttackTarget(attackTarget))
-            {
-                noodle.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        noodle.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
 
-                Debug.Log($"Attacking the {attackTarget}!");
-                attackTarget.TakeDamage(damage);
-            }
-            else
-            {
-                SetAttackTarget(null);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("On attack range!");
-
-        if (other != null)
-        {
-            IDamageable damageable = other.GetComponentInParent<IDamageable>();
-
-            if (damageable == null)
-            {
-                Debug.Log("No IDamageable component found on the collided object.");
-            }
-            else
-            {
-                Debug.Log("It's attacking something!");
-
-                SetAttackTarget(damageable);
-            }
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Out of attack range!");
-
-        if (other.CompareTag("PlayerRig") || other.CompareTag("SandCastle"))
-        {
-            SetAttackTarget(null);
-        }
+        Debug.Log($"Attacking the {_attackTarget}!");
+        _attackTarget.TakeDamage(damage);
     }
 
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
 
-        if (currentHealth <= 0 )
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

@@ -17,11 +17,12 @@ public class WaveManager : MonoBehaviour
 
     private float searchCountdowm = 1f;
 
-    public Transform[] spawnPoints;
+    private WaveSpawnController _waveSpawnController;
 
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        _waveSpawnController = GetComponent<WaveSpawnController>();
     }
 
     private void Update()
@@ -49,7 +50,11 @@ public class WaveManager : MonoBehaviour
         {
             if (state != SpawnStateEnum.SPAWNING && state != SpawnStateEnum.WAITING)
             {
-                SpawnWave(enemyWaves[_nextWave]);
+                state = SpawnStateEnum.SPAWNING;
+
+                _waveSpawnController.SpawnWave(enemyWaves[_nextWave]);
+
+                state = SpawnStateEnum.WAITING;
             }
         }
         else
@@ -77,37 +82,5 @@ public class WaveManager : MonoBehaviour
         }
 
         _nextWave++;
-    }
-
-    private void SpawnWave(EnemyWave wave)
-    {
-        Debug.Log($"Spawning Wave {wave.waveName}...");
-
-        state = SpawnStateEnum.SPAWNING;
-
-        StartCoroutine(SpawnEnemies(enemyWaves[_nextWave])); ;
-
-        state = SpawnStateEnum.WAITING;
-    }
-
-    IEnumerator SpawnEnemies(EnemyWave wave)
-    {
-        //int enemiesToSpawn = Mathf.Min(enemyWaves[_nextWave].enemyCount, spawnPoints.Length);
-
-        Debug.Log($"Enemies to spawn: {wave.enemyCount}");
-
-        for (int i = 0; i < wave.enemyCount; i++)
-        {
-            Debug.Log("Spawning Enemies!");
-
-            Transform spawnPoint = spawnPoints[i % spawnPoints.Length];
-            Vector3 spawnPosition = spawnPoint.position;
-
-            EnemyManager.Instance.SpawnEnemy(spawnPosition, wave.enemyPrefab);
-
-            yield return new WaitForSeconds(1f / wave.spawnRate);
-        }
-
-        yield break;
     }
 }

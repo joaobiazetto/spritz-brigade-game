@@ -7,11 +7,13 @@ public class PlayerCharacter : Character, IDamageable
     [SerializeField] private AssetReference waterGunPrefabAssetReference;
     [SerializeField] private AssetReference waterShotgunPrefabAssetReference;
 
-    private IFireable currentWeapon;
+    private Weapon _currentWeapon;
+
+    public HealthBarController healthBar;
 
     void Start()
     {
-        Debug.Log("PlayerController Start");
+        healthBar.SetMaxHealth(maxHealth);
 
         // Start with Water Gun
         SwitchToWaterGun();
@@ -29,10 +31,19 @@ public class PlayerCharacter : Character, IDamageable
             SwitchToWaterGun();
         }
 
-        // Check for mouse click to fire
-        if (Input.GetMouseButtonDown(0) && currentWeapon != null)
+        if (_currentWeapon != null)
         {
-            currentWeapon.Fire();
+            if (Input.GetMouseButtonDown(0))
+            {
+                _currentWeapon.Fire();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("Player Reloading!");
+
+                StartCoroutine(_currentWeapon.Reload());
+            }
         }
     }
 
@@ -44,7 +55,7 @@ public class PlayerCharacter : Character, IDamageable
         // Instantiate the Water Shotgun using PrefabManager
         PrefabManager.Instance.InstantiatePrefabAsync(waterShotgunPrefabAssetReference, instantiatedPrefab =>
         {
-            currentWeapon = instantiatedPrefab.GetComponent<IFireable>();
+            _currentWeapon = instantiatedPrefab.GetComponent<Weapon>();
 
             // Attach the weapon to the player
             AttachWeaponToPlayer();
@@ -59,7 +70,7 @@ public class PlayerCharacter : Character, IDamageable
         // Instantiate the Water Gun using PrefabManager
         PrefabManager.Instance.InstantiatePrefabAsync(waterGunPrefabAssetReference, instantiatedPrefab =>
         {
-            currentWeapon = instantiatedPrefab.GetComponent<IFireable>();
+            _currentWeapon = instantiatedPrefab.GetComponent<Weapon>();
 
             // Attach the weapon to the player
             AttachWeaponToPlayer();
@@ -68,7 +79,7 @@ public class PlayerCharacter : Character, IDamageable
 
     private void DestroyCurrentWeapon()
     {
-        if (currentWeapon != null && currentWeapon is MonoBehaviour weaponMono)
+        if (_currentWeapon != null && _currentWeapon is MonoBehaviour weaponMono)
         {
             // Destroy the current weapon
             Destroy(weaponMono.gameObject);
@@ -77,7 +88,7 @@ public class PlayerCharacter : Character, IDamageable
 
     private void AttachWeaponToPlayer()
     {
-        if (currentWeapon != null && currentWeapon is MonoBehaviour weaponMono)
+        if (_currentWeapon != null && _currentWeapon is MonoBehaviour weaponMono)
         {
             // Attach the weapon to the player at the weapon spawn point
             weaponMono.transform.parent = weaponSpawnPoint;
@@ -89,6 +100,8 @@ public class PlayerCharacter : Character, IDamageable
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
+
+        healthBar.SetCurrentHealth(currentHealth);
 
         if (currentHealth <= 0)
         {

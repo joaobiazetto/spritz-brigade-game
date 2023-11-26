@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7908142167931176784}
   - component: {fileID: 8125759599569884368}
   - component: {fileID: 7344908592924839449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PreSchoolerPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8314624963494396840}
   - component: {fileID: 5894628990894451044}
   - component: {fileID: 7253788345737252271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PreSchoolerRig
   m_TagString: Enemy
   m_Icon: {fileID: 0}

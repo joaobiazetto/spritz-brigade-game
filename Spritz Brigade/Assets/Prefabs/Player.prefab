@@ -52,7 +52,7 @@ MonoBehaviour:
   currentHealth: 0
   weaponSpawnPoint: {fileID: 2330501263617802321}
   waterGunPrefabAssetReference:
-    m_AssetGUID: ca59fff182635c648a2c00c36ef1892f
+    m_AssetGUID: c0bd403720da6df40ad993a742376888
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  healthBar: {fileID: 908006659080322134, guid: f7030842e9e528541afed4095e5028a2, type: 3}
 --- !u!114 &7942878869037772308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 5729857897532300467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.224, y: 0, z: 0.487}
+  m_LocalPosition: {x: 0.339, y: 0, z: 0.487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

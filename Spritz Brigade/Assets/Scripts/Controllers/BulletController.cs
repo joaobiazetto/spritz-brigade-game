@@ -8,12 +8,13 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
+        if (!collision.gameObject.CompareTag("SandCastleRig"))
         {
-            damageable.TakeDamage(damage);
-            // Add any other logic for bullet impact
-            Destroy(gameObject); // Destroy the bullet after hitting something
+            if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.TakeDamage(damage);
+                Destroy(gameObject); // Destroy the bullet after hitting something
+            }
         }
     }
 }

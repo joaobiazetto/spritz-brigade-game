@@ -1,24 +1,12 @@
 using UnityEngine;
 
-public abstract class EnemyCharacter : Character
+public abstract class EnemyCharacter : Character, IAttackStrategy
 {
     public float damage;
+    public float attackCooldown;
 
     [Header("Attack Settings")]
     public IDamageable attackTarget;
 
-    protected virtual void Start()
-    {
-        attackTarget = null;
-    }
-
-    public void SetAttackTarget(IDamageable target)
-    {
-        attackTarget = target;
-    }
-
-    protected bool IsValidAttackTarget(IDamageable attackTarget)
-    {
-        return attackTarget != null && !attackTarget.Equals(null);
-    }
+    public abstract void Attack(IDamageable attackTarget);
 }

@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ecaeed03d7d7e0541b78047c9169f028
   m_SerializeEntries:
-  - m_GUID: ca59fff182635c648a2c00c36ef1892f
-    m_Address: Assets/Prefabs/Weapons/WaterGunWeaponPrefab.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9926d8f61729ba541a3129f3397a6e27
     m_Address: Assets/Prefabs/Weapons/WaterShotgunWeaponPrefab.prefab
     m_ReadOnly: 0
@@ -34,6 +29,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3daaa350c90495c479db5d8b7733a853
     m_Address: Assets/Prefabs/Enemies/PreSchoolerPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0bd403720da6df40ad993a742376888
+    m_Address: Assets/Prefabs/Weapons/WaterGunWeaponPrefab.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

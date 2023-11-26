@@ -27,7 +27,7 @@ public class WaterGunWeapon : Weapon
         }
         else if (currentAmmo == 0)
         {
-            Reload();
+            Debug.Log("Out of Ammo! Time to reload!");
         }
     }
 }

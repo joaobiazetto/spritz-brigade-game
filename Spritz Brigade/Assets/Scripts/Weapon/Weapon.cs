@@ -8,6 +8,7 @@ public abstract class Weapon : MonoBehaviour, IFireable
     [SerializeField] protected float projectileSpeed;
     [SerializeField] protected float projectileLifetime;
     [SerializeField] protected float cooldownTime;
+    [SerializeField] protected float reloadTime;
     [SerializeField] protected int maxAmmo;
 
     protected int currentAmmo;
@@ -33,10 +34,11 @@ public abstract class Weapon : MonoBehaviour, IFireable
         canFire = true;
     }
 
-    protected void Reload()
+    public IEnumerator Reload()
     {
-        // Add any reload animations or logic here
         Debug.Log("Reloading...");
+        yield return new WaitForSeconds(reloadTime);
+
         currentAmmo = maxAmmo;
         Debug.Log("Reloaded!");
     }
