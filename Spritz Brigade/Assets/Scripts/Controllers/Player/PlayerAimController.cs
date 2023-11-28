@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AimController : MonoBehaviour
+public class PlayerAimController : MonoBehaviour
 {
     Vector3 lookPosition;
     Camera mainCamera;
 
     public Transform playerRigTransform;
+    public LayerMask groundLayer;
 
     private void Start()
     {
@@ -24,7 +22,7 @@ public class AimController : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, groundLayer))
         {
             lookPosition = hit.point;
         }

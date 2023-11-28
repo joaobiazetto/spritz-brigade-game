@@ -85,9 +85,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3092238965053294635}
   - component: {fileID: 3935862883105359544}
-  - component: {fileID: 908006659080322134}
+  - component: {fileID: 4722097373127394392}
   m_Layer: 5
-  m_Name: PlayerHealthBar
+  m_Name: PlayerHealthBarPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,11 +161,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &908006659080322134
+--- !u!114 &4722097373127394392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +174,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6845219695126773078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6cd4dae2fc628b4993854b1a85f9994, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d1a05c12d06a5449a6268fe223a7f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 3935862883105359544}
-  gradient:
+  healthBarFill: {fileID: 7639085690887696819}
+  healthBarSlider: {fileID: 3935862883105359544}
+  healthGradient:
     serializedVersion: 2
     key0: {r: 0.972549, g: 0.23086463, b: 0.19607842, a: 1}
     key1: {r: 0.9528302, g: 0.92573535, b: 0.4539427, a: 1}
@@ -204,11 +205,10 @@ MonoBehaviour:
     atime5: 0
     atime6: 0
     atime7: 0
-    m_Mode: 1
+    m_Mode: 0
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  fill: {fileID: 7639085690887696819}
 --- !u!1 &7537641685282837346
 GameObject:
   m_ObjectHideFlags: 0

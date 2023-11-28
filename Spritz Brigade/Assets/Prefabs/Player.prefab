@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7151287774905516872}
   - component: {fileID: 7942878869037772308}
   - component: {fileID: 7112487690322184797}
+  - component: {fileID: 4851942762459960229}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -61,7 +62,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  healthBar: {fileID: 908006659080322134, guid: f7030842e9e528541afed4095e5028a2, type: 3}
+  playerHealthBarPrefabAssetReference:
+    m_AssetGUID: f7030842e9e528541afed4095e5028a2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!114 &7942878869037772308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +94,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigTransform: {fileID: 3546007237034524201}
+--- !u!114 &4851942762459960229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526881950399987110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f18344d467c88b4ba99324fec465fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnPoint: {fileID: 2330501263617802321}
+  waterGunPrefabAssetReference:
+    m_AssetGUID: c0bd403720da6df40ad993a742376888
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  waterShotgunPrefabAssetReference:
+    m_AssetGUID: 9926d8f61729ba541a3129f3397a6e27
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &5729857897532300467
 GameObject:
   m_ObjectHideFlags: 0

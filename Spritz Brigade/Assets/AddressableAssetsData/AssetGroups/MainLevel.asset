@@ -37,6 +37,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7030842e9e528541afed4095e5028a2
+    m_Address: Assets/Prefabs/Player/PlayerHealthBar.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28014de74c9968d4fb472497b420f43a
+    m_Address: Assets/Prefabs/Enemies/EnemyHealthBarPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42ed8584b25ad574db2378c127195157
+    m_Address: Assets/Prefabs/Weapons/WeaponWaterBarPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 470198823ae8996489ead93d6d51a30c, type: 2}
   m_SchemaSet:

@@ -25,8 +25,6 @@ public class EnemyMeleeAttackController : MonoBehaviour
                 enemy.Attack(_attackTarget);
                 lastAttackTime = Time.time;
             }
-
-            Debug.Log($"Last Attack Time: {lastAttackTime}");
         }
         else
         {

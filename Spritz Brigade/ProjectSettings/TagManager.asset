@@ -11,6 +11,7 @@ TagManager:
   - PlayerRig
   - Enemy
   - SandCastleRig
+  - Canvas
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI
   - Character
   - Sand Castle
-  - 
+  - GroundLayer
   - 
   - 
   - 

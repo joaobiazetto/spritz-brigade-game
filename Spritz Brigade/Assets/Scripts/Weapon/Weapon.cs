@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public abstract class Weapon : MonoBehaviour, IFireable
 {
@@ -9,9 +10,9 @@ public abstract class Weapon : MonoBehaviour, IFireable
     [SerializeField] protected float projectileLifetime;
     [SerializeField] protected float cooldownTime;
     [SerializeField] protected float reloadTime;
-    [SerializeField] protected int maxAmmo;
+    [SerializeField] protected int maxWaterAmmo;
 
-    protected int currentAmmo;
+    public int currentWaterAmmo;
 
     [Header("Prefab Settings")]
     [SerializeField] protected Transform projectileSpawnPoint;
@@ -20,9 +21,24 @@ public abstract class Weapon : MonoBehaviour, IFireable
     [Header("State")]
     [SerializeField] protected bool canFire = true;
 
-    protected virtual void Start()
+    public AssetReference weaponWaterBarAssetReference;
+    protected WaterBar waterBar;
+
+    protected virtual void Awake()
     {
-        currentAmmo = maxAmmo;
+        currentWaterAmmo = maxWaterAmmo;
+
+        InstantiateWaterBar();
+    }
+
+    private void InstantiateWaterBar()
+    {
+        PrefabManager.Instance.InstantiatePrefabAsync(weaponWaterBarAssetReference, instantiatedPrefab =>
+        {
+            waterBar = instantiatedPrefab.GetComponent<WaterBar>();
+
+            waterBar.SetMaxWaterAmmo(maxWaterAmmo);
+        });
     }
 
     public abstract void Fire();
@@ -39,7 +55,9 @@ public abstract class Weapon : MonoBehaviour, IFireable
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = maxAmmo;
+        currentWaterAmmo = maxWaterAmmo;
+
+        waterBar.SetCurrentWaterAmmo(currentWaterAmmo);
         Debug.Log("Reloaded!");
     }
 }

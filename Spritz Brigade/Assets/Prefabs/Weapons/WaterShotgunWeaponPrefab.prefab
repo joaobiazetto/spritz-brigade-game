@@ -216,8 +216,14 @@ MonoBehaviour:
   projectileSpeed: 15
   projectileLifetime: 0.5
   cooldownTime: 1
-  reloadTime: 0
-  maxAmmo: 4
+  reloadTime: 1.5
+  maxWaterAmmo: 4
+  currentWaterAmmo: 0
   projectileSpawnPoint: {fileID: 1672561597729692912}
   projectilePrefab: {fileID: 2516227360831352219, guid: 363662fac05e0464c902cfe881739e57, type: 3}
   canFire: 1
+  weaponWaterBarAssetReference:
+    m_AssetGUID: 42ed8584b25ad574db2378c127195157
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

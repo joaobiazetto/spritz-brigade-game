@@ -1,14 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaterShotgunWeapon : Weapon
 {
+    //private void Start()
+    //{
+    //    if (waterBar != null) waterBar.SetMaxWaterAmmo(maxWaterAmmo);
+    //}
+
     public override void Fire()
     {
-        if (canFire && currentAmmo > 0)
+        if (canFire && currentWaterAmmo > 0)
         {
-            currentAmmo--;
+            currentWaterAmmo--;
+
+            waterBar.SetCurrentWaterAmmo(currentWaterAmmo);
 
             GameObject waterShotgunBullet = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
@@ -26,7 +31,7 @@ public class WaterShotgunWeapon : Weapon
 
             StartCoroutine(Cooldown());
         }
-        else if (currentAmmo == 0)
+        else if (currentWaterAmmo == 0)
         {
             Debug.Log("Out of Ammo! Time to reload!");
         }
