@@ -30,16 +30,19 @@ public class PlayerWeaponController : MonoBehaviour
 
         if (_currentWeapon != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!PauseMenu.isPaused)
             {
-                _currentWeapon.Fire();
-            }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    _currentWeapon.Fire();
+                }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Debug.Log("Player Reloading!");
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Debug.Log("Player Reloading!");
 
-                StartCoroutine(_currentWeapon.Reload());
+                    StartCoroutine(_currentWeapon.Reload());
+                }
             }
         }
     }
