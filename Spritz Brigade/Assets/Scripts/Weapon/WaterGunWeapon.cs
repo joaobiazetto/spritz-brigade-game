@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class WaterGunWeapon : Weapon
 { 
-    //private void Start()
-    //{
-    //    if (waterBar!= null) waterBar.SetMaxWaterAmmo(maxWaterAmmo);
-    //}
+    private void Start()
+    {
+        DestroyWaterBar();
+
+        InstantiateWaterBar();
+    }
 
     public override void Fire()
     {

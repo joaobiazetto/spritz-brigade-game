@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 8499516006835066378}
   m_Layer: 5
   m_Name: WeaponWaterBarPrefab
-  m_TagString: Untagged
+  m_TagString: WeaponWaterBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

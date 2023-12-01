@@ -27,11 +27,9 @@ public abstract class Weapon : MonoBehaviour, IFireable
     protected virtual void Awake()
     {
         currentWaterAmmo = maxWaterAmmo;
-
-        InstantiateWaterBar();
     }
 
-    private void InstantiateWaterBar()
+    protected void InstantiateWaterBar()
     {
         PrefabManager.Instance.InstantiatePrefabAsync(weaponWaterBarAssetReference, instantiatedPrefab =>
         {
@@ -39,6 +37,11 @@ public abstract class Weapon : MonoBehaviour, IFireable
 
             waterBar.SetMaxWaterAmmo(maxWaterAmmo);
         });
+    }
+
+    protected void DestroyWaterBar()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("WeaponWaterBar"));
     }
 
     public abstract void Fire();

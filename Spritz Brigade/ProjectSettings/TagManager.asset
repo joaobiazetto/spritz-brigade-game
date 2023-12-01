@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - SandCastleRig
   - Canvas
+  - WeaponWaterBar
   layers:
   - Default
   - TransparentFX
