@@ -13,6 +13,10 @@ TagManager:
   - SandCastleRig
   - Canvas
   - WeaponWaterBar
+  - BarPrefabManager
+  - PlayerHealthBar
+  - PlayerHealthBarPrefab
+  - SandCastleHealthBar
   layers:
   - Default
   - TransparentFX

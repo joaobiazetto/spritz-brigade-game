@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3336157299109101533}
   - component: {fileID: 7765124729846841792}
+  - component: {fileID: 3320441639381168227}
   m_Layer: 7
   m_Name: SandCastle
   m_TagString: SandCastle
@@ -46,7 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  currentHealth: 500
+  currentHealth: 0
+--- !u!114 &3320441639381168227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555357676000581563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5478f66a75dbfdf44825ace351510763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sandCastle: {fileID: 7765124729846841792}
 --- !u!1001 &3355942699014811793
 PrefabInstance:
   m_ObjectHideFlags: 0

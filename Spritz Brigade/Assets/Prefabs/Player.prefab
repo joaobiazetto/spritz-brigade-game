@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2848351882015416032}
+  - component: {fileID: 6982519567743590003}
   - component: {fileID: 7151287774905516872}
   - component: {fileID: 7942878869037772308}
   - component: {fileID: 7112487690322184797}
@@ -36,6 +37,21 @@ Transform:
   - {fileID: 3546007237034524201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6982519567743590003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526881950399987110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac232dba70a77f4abb1cdef12098405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  moveSpeed: 10
+  currentHealth: 0
 --- !u!114 &7151287774905516872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,25 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1c3845a6f5a2d4aab37de7dc3ccf8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  moveSpeed: 8
-  currentHealth: 0
-  weaponSpawnPoint: {fileID: 2330501263617802321}
-  waterGunPrefabAssetReference:
-    m_AssetGUID: c0bd403720da6df40ad993a742376888
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  waterShotgunPrefabAssetReference:
-    m_AssetGUID: 9926d8f61729ba541a3129f3397a6e27
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  playerHealthBarPrefabAssetReference:
-    m_AssetGUID: f7030842e9e528541afed4095e5028a2
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _character: {fileID: 6982519567743590003}
 --- !u!114 &7942878869037772308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a44e27268996174c94ee6e56d691232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 7151287774905516872}
   playerRig: {fileID: 8546497620521538350}
 --- !u!114 &7112487690322184797
 MonoBehaviour:
@@ -94,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigTransform: {fileID: 3546007237034524201}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &4851942762459960229
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 100.88671, y: -3.2587278, z: 8.739324}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.1831}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2503948935846977425}
@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandModel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92fa7e1e10d06ae40989ccc57d4a2137, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -150,7 +154,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 900f2dccf3002fc4db8476e0fc39d094, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 78d7e7d2956467c41b995980dbc6cfac, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &7526958452002352103
 MeshCollider:

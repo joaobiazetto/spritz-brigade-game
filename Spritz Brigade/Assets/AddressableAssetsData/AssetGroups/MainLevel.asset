@@ -52,6 +52,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 714c9a0ea759cce4695f4a57cff42f22
+    m_Address: Assets/Prefabs/UI/SandCastleHealthBarPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 470198823ae8996489ead93d6d51a30c, type: 2}
   m_SchemaSet:

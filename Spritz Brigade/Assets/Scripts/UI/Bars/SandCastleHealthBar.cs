@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthBar : HealthBar
+public class SandCastleHealthBar : HealthBar
 {
     private Canvas _canvas;
 
@@ -13,7 +13,7 @@ public class PlayerHealthBar : HealthBar
             transform.SetParent(_canvas.transform, false);
 
             RectTransform rectTransform = GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector3(355f, -75f, 0f);
+            rectTransform.anchoredPosition = new Vector3(0f, -440f, 0f);
         }
     }
 }

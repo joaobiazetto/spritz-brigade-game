@@ -15,7 +15,7 @@ public class WaterBar : MonoBehaviour
             transform.SetParent(_canvas.transform, false);
 
             RectTransform rectTransform = GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector3(181f, -44f, 0f);
+            rectTransform.anchoredPosition = new Vector3(355f, -105f, 0f);
         }
     }
 
